@@ -31,8 +31,8 @@ function header_scripts() { ?>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<?php
-	if (of_get_option('example_text_mini')) : 
-		echo of_get_option('example_text_mini');
+	if (of_get_option('basis_google_analytics')) : 
+		echo of_get_option('basis_google_analytics');
 	endif;
 }
 

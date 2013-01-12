@@ -2,4 +2,4 @@
 
 */
 // Basic FitVids Test
-        $(".main-content").fitVids();
+	$(".main-content").fitVids();
