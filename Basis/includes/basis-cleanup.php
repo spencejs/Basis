@@ -1,46 +1,5 @@
 <?php
 
-
-// Rewrites DO NOT happen for child themes
-// rewrite /wp-content/themes/basis/css/ to /css/
-// rewrite /wp-content/themes/basis/js/  to /js/
-// rewrite /wp-content/themes/basis/img/ to /js/
-// rewrite /wp-content/plugins/ to /plugins/
-
-function basis_flush_rewrites() {
-	global $wp_rewrite;
-	$wp_rewrite->flush_rules();
-}
-
-function basis_add_rewrites($content) {
-	$theme_name = next(explode('/themes/', get_stylesheet_directory()));
-	global $wp_rewrite;
-	$basis_new_non_wp_rules = array(
-		'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
-		'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
-		'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
-		'plugins/(.*)'  => 'wp-content/plugins/$1'
-	);
-	$wp_rewrite->non_wp_rules += $basis_new_non_wp_rules;
-}
-
-add_action('admin_init', 'basis_flush_rewrites');
-
-function basis_clean_assets($content) {
-    $theme_name = next(explode('/themes/', $content));
-    $current_path = '/wp-content/themes/' . $theme_name;
-    $new_path = '';
-    $content = str_replace($current_path, $new_path, $content);
-    return $content;
-}
-
-function basis_clean_plugins($content) {
-    $current_path = '/wp-content/plugins';
-    $new_path = '/plugins';
-    $content = str_replace($current_path, $new_path, $content);
-    return $content;
-}
-
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
 function basis_nice_search_redirect() {
