@@ -8,7 +8,7 @@ Really, this theme began with a tweaked version of the [Roots](http://www.rootst
 + The Options Framework from [WPTheming.com](http://www.wptheming.com) - Easily creaty a full-featured Options Panel for your theme
 + [FitVids.js](http://fitvidsjs.com/) - A solution for easy responsive videos
 + [Respond.js](https://github.com/scottjehl/Respond) - Adds support for CSS media queries for IE6-8
-+ [Warning.js](http://code.google.com/p/ie6-upgrade-warning/) - Configured to encourage users on IE7 or lower to upgrae to a decent browser
++ [Warning.js](http://code.google.com/p/ie6-upgrade-warning/) - Configured to encourage users on IE7 or lower to upgrade to a decent browser
 
 ## Features
 
