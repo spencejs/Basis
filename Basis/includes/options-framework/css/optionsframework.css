@@ -169,14 +169,13 @@
 /* Image Uploader */
 
 #optionsframework .controls input.upload {
-	width:80%;
+	width:75%;
 }
 #optionsframework .controls input.upload_button {
 	float:right;
-	width:45px;
+	width:20%;
 	border-color:#BBBBBB;
 	cursor:pointer;
-	height:16px;
 }
 #optionsframework .controls input.upload_button:hover {
 	border-color:#666666;

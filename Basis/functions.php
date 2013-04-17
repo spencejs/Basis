@@ -19,7 +19,10 @@ if ( !function_exists( 'optionsframework_init' ) ) {
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
 // add_editor_style('editor-style.css?' . time());
-add_editor_style('editor-style.css');
+function my_theme_add_editor_styles() {
+    add_editor_style( 'editor-style.css' );
+}
+add_action( 'init', 'my_theme_add_editor_styles' );
 
 if ( ! isset( $content_width ) ) $content_width = 1000;
 
