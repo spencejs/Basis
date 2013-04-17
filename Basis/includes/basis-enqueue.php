@@ -24,7 +24,7 @@ function init_scripts() {
 
 function header_scripts() { ?>
 	
-	<!--[if lt IE 8]>
+	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/ie6/warning.js"></script>
 		<script>window.onload=function(){e("<?php echo get_template_directory_uri(); ?>/js/ie6/")}</script>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/respond.min.js"></script>
