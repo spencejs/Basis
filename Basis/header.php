@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
         <?php if (is_single()) { 
 			if (have_posts()) : while (have_posts()) : the_post(); ?>
-				<meta name="description" content='<?php the_excerpt_rss(); ?>'/>
+				<meta name="description" content='<?php $excerpt = strip_tags(get_the_excerpt()); echo $excerpt; ?>'/>
             <?php endwhile; endif; ?>
 		<?php } else { ?>
 			<meta name="description" content="<?php bloginfo('description'); ?>" />
