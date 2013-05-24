@@ -26,7 +26,7 @@ Tags: starter
 - END TABLE OF CONTENTS*/
 
 /*--[ HTML5 Boilerplate RESET ]--------------------------------------------------------------------------------*/
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,hgroup,menu,nav,section,menu,time,mark,audio,video{border:0;-moz-box-sizing: border-box;-webkit-box-sizing:border-box;box-sizing:border-box;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,hgroup,menu,nav,section,menu,time,mark,audio,video{border:0;-moz-box-sizing: border-box;-webkit-box-sizing:border-box;box-sizing:border-box;outline:0;font-size:100%;vertical-align:baseline;margin:0;padding:0}
 article,aside,figure,footer,header,hgroup,nav,section{display:block}
 ul{list-style:inside;}
 nav ul{list-style:none}
