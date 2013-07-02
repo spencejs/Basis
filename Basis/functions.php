@@ -1,5 +1,4 @@
 <?php
-
 locate_template(array('includes/basis-activation.php'), true, true);	// activation
 locate_template(array('includes/basis-enqueue.php'), true, true);	// activation
 locate_template(array('includes/basis-sidebars.php'), true, true);	// sidebars
