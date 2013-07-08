@@ -1,7 +1,7 @@
 # Welcome to Basis
 **An HTML5/CSS3 Wordpress starter/boilerplate theme with some really sweet features**
 
-Basis is a bare-bones Wordpress theme. It exists for theme delopers to use as a basic boilerplate and contains everything you might need to get started, and then some. Along with all of the essential Wordpress theme files, Basis includes an awesome bundle of Wordpress functions, some handy scripts, and a starter stylesheet provided in SASS, as well as vanilla CSS.
+Basis is a bare-bones Wordpress theme. It exists for theme developers to use as a basic boilerplate and contains everything you might need to get started, and then some. Along with all of the essential Wordpress theme files, Basis includes an awesome bundle of Wordpress functions, some handy scripts, and a starter stylesheet provided in SASS, as well as vanilla CSS.
 
 ## Markup and Semantics
 
@@ -10,7 +10,7 @@ In creating Basis, I paid particular attention to semantics and best practices i
 + Special care was given to the proper use of all HTML5 elements, such as `article`, `header`, (the brand-new) `main`, etcetera. (Thanks must be given to the [HTML5 Doctor](http://html5doctor.com). That website is a treasure-trove of information on semantic markup.)
 + The `body` tag provides the outer wrapper for the site content. In other words, there is no div with a class or "wrapper", and the content width is defined by the `body` tag only.
 + Wherever possible, the code is marked up with [Microdata](http://schema.org) to add an extra layer of machine-readable information.
-+ Wherever possible, ARIA roles are included for maximum accessibility to screan-readers and other assistive technologies.
++ Wherever possible, ARIA roles are included for maximum accessibility to screen-readers and other assistive technologies.
 
 ### An Awesome Document Head
 
@@ -25,7 +25,7 @@ Basis comes with all of the basic theme pages to jumpstart your theme developmen
 
 **Theme Pages:** 404, archive, front-page, index, page, search, single
 
-**Standard Wordpress Parts:** comments, footer, header, searchform, sidebar
+**Standard Wordpress Parts:** comments, footer, header, search form, sidebar
 
 **Custom Reusable Parts:** loop-list, loop-single, part-not_found, part-pagination, part-post_meta, part-footer_meta
 
@@ -53,7 +53,7 @@ The predefined CSS styles are what I consider to be a very basic starting place.
 + Defines a 70%/30% main column and sidebar.
 + Setup of basic media queries. Breaks the previously defined main column and sidebar elements into stacked 100%-width elements at 800px viewport.
 + Includes very basic typography, just to get you started.
-+ REM units used for all typography. (If you need backwards compatability, you should consider switching to EMs instead.)
++ REM units used for all typography. (If you need backwards compatibility, you should consider switching to EMs instead.)
 
 ## Javascript
 
@@ -64,7 +64,7 @@ Basis includes the following jQuery plugins:
 
 Several script files are available and enqueued for your use:
 
-+ **/js/plugins.js** - This a place for you to paste in your minified jQuery/Javascript plugins. Concatonating them all to this one file minimizes HTTP requests and speeds up page loads. The above-mentioned FitVids.js is in this file already.
++ **/js/plugins.js** - This a place for you to paste in your minified jQuery/Javascript plugins. Concatenating them all to this one file minimizes HTTP requests and speeds up page loads. The above-mentioned FitVids.js is in this file already.
 + **/js/script.js** - This is where you can add your own scripts and trigger your plugins.
 + **/inlcludes/js/admin-scripts.js** - This is where you can add scripts for use in the Wordpress admin.
 
@@ -89,7 +89,7 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 
 + Enqueues a stylesheet and scripts file for use in the Wordpress admin.
 + Shows a warning if no Tagline other than the default has been set for the site.
-+ Shows a warning if your .htaccess file is not writeable.
++ Shows a warning if your .htaccess file is not writable.
 + Sets post revisions to 5 if no number has been otherwise defined.
 + Adds a number of additional tags to TinyMCE.
 + Adds editor-style.css to TinyMCE, so you can add your own type styles for a more accurate preview.
@@ -107,7 +107,7 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 + Makes a number of tweaks to wp_head, including the removal of WP Generator.
 + Optimizes Robots.txt.
 + Gives a custom word length and More link to the excerpt.
-+ Removes extranious wrapper from Menus.
++ Removes extraneous wrapper from Menus.
 
 ### /includes/basis-custom.php
 
@@ -133,5 +133,5 @@ For more information on using the Options Framework, visit [wptheming.com](http:
 
 ### /includes/basis-sidebars.php
 
-This is is where you shuld register any sidebars for use in your theme. A sidebar called "Primary Widget Area" is aleady registered here.
+This is is where you should register any sidebars for use in your theme. A sidebar called "Primary Widget Area" is already registered here.
 
