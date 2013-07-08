@@ -1,0 +1,214 @@
+/*!
+Theme Name: Basis
+Version: 3.0
+Author: Josiah Spence
+Author URI: http://codecarpenter.com
+Theme URI: http://codecarpenter.com
+Description: A starter theme by Code Carpenter.
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
+Tags: starter
+*/
+
+/*TABLE OF CONTENTS -
+
+	-SASS Goodies
+	-Reset
+	-Typography
+	-Classes
+	-Structure
+	-Header
+		-Nav
+
+- END TABLE OF CONTENTS*/
+
+/*BEGIN SASS Goodies*/
+
+$color-text:			#333;
+$color-text-light:		#999;
+$color-accent:			#179aa7;
+$color-accent-hover:	#00ccee;
+
+$margin-standard:		1rem;
+
+/*END SASS Goodies*/
+
+/*BEGIN Reset*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,f{border:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}
+article,aside,figure,footer,header,nav,section,main{display:block}
+ul{list-style:outside;margin-left:1.3rem}
+ol{list-style:decimal outside;margin-left:1.3rem}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1rem 0;padding:0}
+input,select{vertical-align:middle}
+img{max-width:100%;height:auto;}
+video{width:100%;height:auto;}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position: relative;vertical-align: baseline}
+sup{top:-0.5rem}
+sub{bottom:-0.25rem}
+svg:not(:root){overflow: hidden}
+/*END Reset*/
+
+/*BEGIN Typography*/
+
+body{
+	color:$color-text;
+	line-height:1.5;
+	}
+
+p,h1,h2,h3,h4,h5,ul,ol,blockquote{
+	margin-bottom:$margin-standard;
+	}
+
+p{
+	}
+
+a{
+	color:$color-accent;
+	text-decoration:none;
+
+	&:hover{
+		color:$color-accent-hover;
+		}
+	}
+
+h1{
+	font-size:2.625rem;
+	line-height:3rem;
+	}
+
+h2{
+	font-size:2.125rem;
+	line-height:2.5rem;
+	margin-top:2rem;
+	}
+
+h3{
+	font-size:1.625rem;
+	line-height:2rem;
+	margin-top:2rem;
+	}
+
+h4{
+	font-size:1.313rem;
+	line-height:1.5rem;
+	margin-top:2rem;
+	}
+
+h5{
+	margin-top:2rem;
+	}
+
+/*END Typography*/
+
+/*BEGIN Classes*/
+
+/* new clearfix */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	}
+
+.aligncenter { display:block; margin:0 auto }
+.alignleft { float:left; margin: 0 $margin-standard $margin-standard 0;}
+.alignright { float:right; margin:0 0 $margin-standard $margin-standard;}
+.wp-caption { padding:10px; margin:10px }
+.wp-caption-text{}
+.sticky{}
+.gallery-caption{}
+.bypostauthor{}
+
+/*END Classes*/
+
+/*BEGIN Structure*/
+
+html{
+	height:100%;
+	}
+
+body{
+	margin:0 auto;
+	max-width:1040px;
+	padding:20px;
+	}
+
+.header{
+	margin-bottom:$margin-standard;
+	}
+
+main{
+	float:left;
+	padding-right:6%;
+	width:70%;
+
+	@media screen and (max-width: 800px) {
+		float:none;
+		padding-right:0;
+		width:100%;
+		}
+	}
+
+.sidebar{
+	float:left;
+	width:30%;
+
+	@media screen and (max-width: 800px) {
+		float:none;
+		width:100%;
+		}
+	}
+
+.footer{
+	clear:both;
+	}
+
+/*END Structure*/
+
+/*BEGIN Header*/
+
+.logo{
+	font-size:2.625rem;
+	line-height:3rem;
+	}
+
+	/*BEGIN Nav*/
+
+	.main-nav{
+
+		ul{
+			margin:0;
+			}
+
+		li{
+			display:inline-block;
+			}
+		}
+
+	li.current_page_item a{
+		color:$color-accent-hover;
+		}
+
+	/*END Nav*/
+
+/*END Header*/
+
+/*BEGIN Post*/
+
+time{
+	color:$color-text-light;
+	}
+
+/*END Post*/

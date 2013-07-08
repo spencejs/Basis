@@ -1,11 +1,14 @@
 <?php
+################################################################################
+// Tweak and refine default Wordpress behavior
+################################################################################
 
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
 function basis_nice_search_redirect() {
 	if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
 		wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
-    exit();
+	exit();
 	}
 }
 add_action('template_redirect', 'basis_nice_search_redirect');
@@ -13,61 +16,23 @@ add_action('template_redirect', 'basis_nice_search_redirect');
 function basis_search_query($escaped = true) {
 	$query = apply_filters('basis_search_query', get_query_var('s'));
 	if ($escaped) {
-    	$query = esc_attr( $query );
+		$query = esc_attr( $query );
 	}
-  	return urldecode($query);
+	return urldecode($query);
 }
 
 add_filter('get_search_query', 'basis_search_query');
-
-// root relative URLs for everything
-// inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
-// thanks to Scott Walkinshaw (scottwalkinshaw.com)
-function basis_root_relative_url($input) {
-	$output = preg_replace_callback(
-    '/(https?:\/\/[^\/|"]+)([^"]+)?/',
-    create_function(
-      '$matches',
-      // if full URL is site_url, return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
-      // if domain is equal to site_url, then make URL relative 
-      '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
-      // if domain is not equal to site_url, do not make external link relative
-      '} else { return $matches[0]; };'
-    ),
-    $input
-  );
-  return $output;
-}
-
-
-
-// Leaving plugins_url alone in admin to avoid potential issues (such as Gravity Forms)
-if (!is_admin()) {
-	add_filter('plugins_url', 'basis_root_relative_url');
-}
-
-// remove root relative URLs on any attachments in the feed
-function basis_relative_feed_urls() {
-	global $wp_query;
-	if (is_feed()) {
-		remove_filter('wp_get_attachment_url', 'basis_root_relative_url');
-		remove_filter('wp_get_attachment_link', 'basis_root_relative_url');
-	}
-}
-
-add_action('pre_get_posts', 'basis_relative_feed_urls' );
 
 // remove dir and set lang="en" as default (rather than en-US)
 function basis_language_attributes() {
 	$attributes = array();
 	$output = '';
-  $lang = get_bloginfo('language');
-  if ($lang && $lang !== 'en-US') {
-    $attributes[] = "lang=\"$lang\"";
-  } else {
-    $attributes[] = 'lang="en"';
-  }
+	$lang = get_bloginfo('language');
+	if ($lang && $lang !== 'en-US') {
+		$attributes[] = "lang=\"$lang\"";
+	} else {
+		$attributes[] = 'lang="en"';
+	}
 
 	$output = implode(' ', $attributes);
 	$output = apply_filters('basis_language_attributes', $output);
@@ -91,7 +56,7 @@ add_filter('pre_get_posts','feedFilter');
  
 function feedContentFilter($content) {
 	$thumbId = get_post_thumbnail_id();
- 
+
 	if($thumbId) {
 		$img = wp_get_attachment_image_src($thumbId);
 		$image = '<img align="left" src="'. $img[0] .'" alt="" width="'. $img[1] .'" height="'. $img[2] .'" />';
@@ -108,7 +73,7 @@ add_theme_support( 'automatic-feed-links' );
 function basis_noindex() {
 	if (get_option('blog_public') === '0')
 	echo '<meta name="robots" content="noindex,nofollow">', "\n";
-}	
+}
 
 function basis_rel_canonical() {
 	if (!is_singular())
@@ -135,7 +100,6 @@ function basis_gallery_style($css) {
 
 function basis_head_cleanup() {
 	// http://wpengineer.com/1438/wordpress-header/
-	remove_action('wp_head', 'feed_links', 2);
 	remove_action('wp_head', 'feed_links_extra', 3);
 	remove_action('wp_head', 'rsd_link');
 	remove_action('wp_head', 'wlwmanifest_link');
@@ -266,14 +230,19 @@ remove_shortcode('gallery');
 add_shortcode('gallery', 'basis_gallery_shortcode');
 
 // excerpt cleanup
+// make changes here to suit your excerpt needs
+
+	// Set number of words in the excerpt
 function basis_excerpt_length($length) {
 	return 40;
 }
 
+	// Set text for Continue Reading link
 function basis_continue_reading_link() {
 	return ' <a href="' . get_permalink() . '" class="more-link">' . __( ' Read More', 'basis' ) . '</a>';
 }
 
+	// auto add ellipses
 function basis_auto_excerpt_more($more) {
 	return ' &hellip;' . basis_continue_reading_link();
 }
@@ -292,35 +261,35 @@ add_filter('wp_nav_menu_args', 'basis_nav_menu_args');
 class basis_nav_walker extends Walker_Nav_Menu {
 	function start_el(&$output, $item, $depth, $args) {
 		global $wp_query;
-	    $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-	    $slug = sanitize_title($item->title);
+		$slug = sanitize_title($item->title);
 
-	    $class_names = $value = '';
-	    $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+		$class_names = $value = '';
+		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
-	    $classes = array_filter($classes, 'basis_check_current');
+		$classes = array_filter($classes, 'basis_check_current');
 
-	    $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-	    $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-	    $id = apply_filters( 'nav_menu_item_id', 'menu-' . $slug, $item, $args );
-	    $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+		$id = apply_filters( 'nav_menu_item_id', 'menu-' . $slug, $item, $args );
+		$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
 
-	    $output .= $indent . '<li' . $id . $class_names . '>';
+		$output .= $indent . '<li' . $id . $class_names . '>';
 
-	    $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-	    $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-	    $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-	    $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-	    $item_output = $args->before;
-	    $item_output .= '<a'. $attributes .'>';
-	    $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-	    $item_output .= '</a>';
-	    $item_output .= $args->after;
+		$item_output = $args->before;
+		$item_output .= '<a'. $attributes .'>';
+		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		$item_output .= '</a>';
+		$item_output .= $args->after;
 
-	    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 }
 

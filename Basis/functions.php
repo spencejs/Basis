@@ -1,11 +1,11 @@
 <?php
+//Include various functions files
 locate_template(array('includes/basis-activation.php'), true, true);	// activation
 locate_template(array('includes/basis-enqueue.php'), true, true);	// activation
 locate_template(array('includes/basis-sidebars.php'), true, true);	// sidebars
 locate_template(array('includes/basis-admin.php'), true, true);		// admin additions/mods
 locate_template(array('includes/basis-options.php'), true, true);	// theme options menu
 locate_template(array('includes/basis-cleanup.php'), true, true);	// code cleanup/removal
-locate_template(array('includes/basis-htaccess.php'), true, true);	// h5bp htaccess
 locate_template(array('includes/basis-custom.php'), true, true);		// custom functions
 locate_template(array('includes/basis-meta-boxes.php'), true, true);		// Meta Boxes
 
@@ -15,20 +15,13 @@ if ( !function_exists( 'optionsframework_init' ) ) {
 	locate_template(array('includes/options-framework/options-framework.php'), true, true);
 }
 
-// tell the TinyMCE editor to use editor-style.css
-// if you have issues with getting the editor to show your changes then use the following line:
-// add_editor_style('editor-style.css?' . time());
-function my_theme_add_editor_styles() {
-    add_editor_style( 'editor-style.css' );
-}
-add_action( 'init', 'my_theme_add_editor_styles' );
-
-if ( ! isset( $content_width ) ) $content_width = 1000;
+//Set Content Width
+if ( ! isset( $content_width ) ) $content_width = 700;
 
 //Post Thumbnails
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size( 150, 120, true ); // Normal post thumbnails
-add_image_size( 'custom-thumbnail-size', 260, 174, true ); // Custom thumbnail size
+add_image_size( 'custom-thumbnail-size', 260, 175, true ); // Custom thumbnail size
 
 // Custom Menus
 add_theme_support('menus');

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="main-content">
+<main role="main">
 	<?php if (have_posts()) : ?>
 
 	<h1>
@@ -21,12 +21,12 @@
 
 	<?php get_template_part('part', 'pagination'); ?>
 
-<?php else : ?>
+	<?php else : ?>
 
-	<?php get_template_part('part', 'not_found'); ?>
+		<?php get_template_part('part', 'not_found'); ?>
 
-<?php endif; ?>
-</section>
+	<?php endif; ?>
+</main>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

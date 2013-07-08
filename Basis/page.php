@@ -1,21 +1,19 @@
 <?php
 get_header(); ?>
 
-<section class="main-content">
-    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<main role="main">
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-        <article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-            <header>
-                <h1><?php the_title(); ?></h1>
-            </header>
-    
-            <?php the_content(); ?>
-        </article>
+		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-    <?php endwhile; endif; ?>
-    <?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+			<h1><?php the_title(); ?></h1>
 
-</section>
-	
+			<?php the_content(); ?>
+
+		</article>
+
+	<?php endwhile; endif; ?>
+</main>
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

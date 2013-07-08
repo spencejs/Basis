@@ -1,14 +1,7 @@
-</div> <!--End Content--> 
-        
-<footer class="footer" role="contentinfo">
-	<nav>
-		<ul>
-			<li>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></li>
-		</ul>
-	</nav>
-</footer>	
 
-</div><!--End Wrapper--> 
+	<footer class="footer" role="contentinfo">
+		&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>
+	</footer>
 
 <?php wp_footer(); ?>
 </body>

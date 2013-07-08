@@ -1,4 +1,9 @@
 <?php
+################################################################################
+// The Basis theme uses the Options Framework from wptheming.com. For more information, visit http://wptheming.com/options-framework-theme/
+// Below is a series of example tabs and fields. The final tab provides a field for Google Analytics code, which is actually used in the theme. If you remove this option, please also remove the call for the option data in the basis-enqueue.php file.
+################################################################################
+
 /* 
  * This is an example of how to add custom scripts to the options panel.
  * This one shows/hides the an option when a checkbox is clicked.
@@ -129,6 +134,7 @@ function optionsframework_options() {
 
 	$options = array();
 
+	// Basic Settings Tab
 	$options[] = array(
 		'name' => __('Basic Settings', 'options_framework_theme'),
 		'type' => 'heading');
@@ -217,6 +223,7 @@ function optionsframework_options() {
 		'std' => '1',
 		'type' => 'checkbox');
 
+	// Advanced settings tab
 	$options[] = array(
 		'name' => __('Advanced Settings', 'options_framework_theme'),
 		'type' => 'heading');
@@ -289,10 +296,10 @@ function optionsframework_options() {
 		'type' => 'typography',
 		'options' => $typography_options );
 
+	// Text editor tab
 	$options[] = array(
 		'name' => __('Text Editor', 'options_framework_theme'),
 		'type' => 'heading' );
-
 	/**
 	 * For $settings options see:
 	 * http://codex.wordpress.org/Function_Reference/wp_editor
@@ -313,6 +320,18 @@ function optionsframework_options() {
 		'id' => 'example_editor',
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
+
+	// A tab with a real field - The Basis theme actually calls this field's option data. You may want to keep this field in place.
+	$options[] = array(
+		'name' => __('Analytics', 'options_framework_theme'),
+		'type' => 'heading');
+
+	$options[] = array(
+		'name' => __('Google Analytics', 'options_framework_theme'),
+		'desc' => __('Insert Your Google Analytics Code Here. No script tags are necessary.', 'options_framework_theme'),
+		'id' => 'basis_google_analytics',
+		'std' => '',
+		'type' => 'textarea');
 
 	return $options;
 }
