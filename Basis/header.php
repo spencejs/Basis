@@ -6,10 +6,11 @@
 		<meta charset="<?php bloginfo('charset'); ?>" />
 		<title><?php wp_title( '|', true, 'right' ); ?> <?php bloginfo('name'); ?></title>
 
-		<!-- Conditional Description -->
+		<!-- Conditional for Single Pages -->
 		<?php if (is_single()) {
 			if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<meta name="description" content="<?php $excerpt = strip_tags(get_the_excerpt()); echo $excerpt; ?>"/>
+				<link rel="canonical" href="<?php the_permalink(); ?>"
 
 				<!-- Facebook Open Graph Meta for Single Posts -->
 				<meta property="og:image" content="<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail' ); echo $thumb['0']; ?> "/>
