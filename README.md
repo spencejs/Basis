@@ -15,6 +15,7 @@ In creating Basis, I paid particular attention to semantics and best practices i
 ### An Awesome Document Head
 
 + A conditional Meta Description that contains the post excerpt on single post pages and the site tagline on all others.
++ Rel="canonical" links for single pages.
 + Meta tags for Facebook Open Graph to ensure that your shared posts contain all the proper information.
 + Conditional loading of a theme favicon, Apple-touch icon, and Windows 8 Tile icon, if the files are present.
 
