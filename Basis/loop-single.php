@@ -8,7 +8,7 @@
 		<?php the_content(); ?>
 	</div>
 
-	<footer role="complementary>
+	<footer role="complementary">
 		<?php get_template_part('part', 'footer_meta'); ?>
 	</footer>
 
