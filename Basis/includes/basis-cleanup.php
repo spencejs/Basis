@@ -69,6 +69,9 @@ function feedContentFilter($content) {
 //Automatic Feed Links
 add_theme_support( 'automatic-feed-links' );
 
+//html5 Markup
+add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
+
 // cleanup wp_head
 function basis_noindex() {
 	if (get_option('blog_public') === '0')

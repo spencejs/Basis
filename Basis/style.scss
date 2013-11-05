@@ -1,6 +1,6 @@
 /*!
 Theme Name: Basis
-Version: 3.0
+Version: 3.1
 Author: Josiah Spence
 Author URI: http://codecarpenter.com
 Theme URI: http://codecarpenter.com
@@ -112,15 +112,16 @@ h5{
 
 /*BEGIN Classes*/
 
-/* new clearfix */
+/*micro clearfix: h5bp.com/v*/
+.clearfix:before,
 .clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
 	clear: both;
-	height: 0;
-	}
+}
 
 .aligncenter { display:block; margin:0 auto }
 .alignleft { float:left; margin: 0 $margin-standard $margin-standard 0;}
@@ -130,6 +131,36 @@ h5{
 .sticky{}
 .gallery-caption{}
 .bypostauthor{}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden, .screen-reader-text{
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
 
 /*END Classes*/
 

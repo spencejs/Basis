@@ -1,0 +1,164 @@
+{
+  "id": "1a5c8de2",
+  "name": "Basis",
+  "files": [
+    {
+      "id": "6d2f2b82",
+      "pid": "1a5c8de2",
+      "name": "editor-style.scss",
+      "input": "editor-style.scss",
+      "output": "editor-style.css",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compressed",
+        "compassConfigRb": false,
+        "autoprefixer": true
+      },
+      "type": "Scss"
+    },
+    {
+      "id": "41e3fae3",
+      "pid": "1a5c8de2",
+      "name": "admin-scripts.js",
+      "type": "JS",
+      "input": "includes\\js\\admin-scripts.js",
+      "output": "includes\\js\\{{jsMinPath}}\\admin-scripts.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "50b0c0e4",
+      "pid": "1a5c8de2",
+      "name": "colorpicker.js",
+      "type": "JS",
+      "input": "includes\\options-framework\\js\\colorpicker.js",
+      "output": "includes\\options-framework\\js\\{{jsMinPath}}\\colorpicker.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "639791eb",
+      "pid": "1a5c8de2",
+      "name": "media-uploader.js",
+      "type": "JS",
+      "input": "includes\\options-framework\\js\\media-uploader.js",
+      "output": "includes\\options-framework\\js\\{{jsMinPath}}\\media-uploader.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "6d8a83b7",
+      "pid": "1a5c8de2",
+      "name": "of-medialibrary-uploader.js",
+      "type": "JS",
+      "input": "includes\\options-framework\\js\\of-medialibrary-uploader.js",
+      "output": "includes\\options-framework\\js\\{{jsMinPath}}\\of-medialibrary-uploader.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "c0ef7ce0",
+      "pid": "1a5c8de2",
+      "name": "options-custom.js",
+      "type": "JS",
+      "input": "includes\\options-framework\\js\\options-custom.js",
+      "output": "includes\\options-framework\\js\\{{jsMinPath}}\\options-custom.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "299d6f9a",
+      "pid": "1a5c8de2",
+      "name": "warning.js",
+      "type": "JS",
+      "input": "js\\ie6\\warning.js",
+      "output": "js\\ie6\\{{jsMinPath}}\\warning.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "d6dc2db1",
+      "pid": "1a5c8de2",
+      "name": "plugins.js",
+      "type": "JS",
+      "input": "js\\plugins.js",
+      "output": "js\\{{jsMinPath}}\\plugins.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "a0233e7c",
+      "pid": "1a5c8de2",
+      "name": "script.js",
+      "type": "JS",
+      "input": "js\\script.js",
+      "output": "js\\{{jsMinPath}}\\script.min.js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true
+      }
+    },
+    {
+      "id": "a8034bad",
+      "pid": "1a5c8de2",
+      "name": "style.scss",
+      "input": "style.scss",
+      "output": "style.css",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compressed",
+        "compassConfigRb": false,
+        "autoprefixer": true,
+        "autoprefixerBrowsers": ""
+      },
+      "type": "Scss"
+    }
+  ],
+  "imports": [],
+  "config": {
+    "liveRefresh": true,
+    "liveRefreshDelay": 0,
+    "filterPatterns": "",
+    "useCustomServer": false,
+    "customServerUrl": "",
+    "cssPath": "",
+    "jsPath": "js",
+    "htmlPath": "html",
+    "jsMinPath": "min",
+    "autoprefixerBrowsers": "",
+    "ftpPassword": "",
+    "ftpUsername": ""
+  }
+}
