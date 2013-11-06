@@ -72,6 +72,15 @@ add_theme_support( 'automatic-feed-links' );
 //html5 Markup
 add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
 
+//Remove URL Field from Comment Form - Fights Spam
+add_filter('comment_form_default_fields', 'url_filtered');
+function url_filtered($fields)
+{
+	if(isset($fields['url']))
+		unset($fields['url']);
+		return $fields;
+}
+
 // cleanup wp_head
 function basis_noindex() {
 	if (get_option('blog_public') === '0')

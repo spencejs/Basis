@@ -16,9 +16,9 @@
 
 			<?php endif; ?>
 
-			<section class="comment">
+			<div class="comment">
 				<?php comment_text() ?>
-			</section>
+			</div>
 
 			<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
 
@@ -31,11 +31,9 @@
 		die (__('Please do not load this page directly. Thanks!', 'basis'));
 
 	if ( post_password_required() ) { ?>
-	<section class="comments">
 		<div class="notice">
 			<p class="bottom"><?php _e('This post is password protected. Enter the password to view comments.', 'basis'); ?></p>
 		</div>
-	</section>
 	<?php
 		return;
 	}
@@ -48,74 +46,27 @@
 		<?php wp_list_comments('type=comment&callback=basis_comments'); ?>
 		<?php // wp_list_comments(); ?>
 		</ol>
-		<footer>
-			<nav class="comments-nav">
-				<div class="comments-previous"><?php previous_comments_link( __( '&larr; Older comments', 'basis' ) ); ?></div>
-				<div class="comments-next"><?php next_comments_link( __( 'Newer comments &rarr;', 'basis' ) ); ?></div>
-			</nav>
-		</footer>
+		<?php // Are there comments to navigate through?
+			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+		?>
+		<nav class="navigation comment-navigation" role="navigation">
+			<h1 class="screen-reader-text section-heading"><?php _e( 'Comment navigation', 'basis' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'basis' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'basis' ) ); ?></div>
+		</nav><!-- .comment-navigation -->
+		<?php endif; // Check for comment navigation ?>
 	</section>
 <?php else : // this is displayed if there are no comments so far ?>
 	<?php if ( comments_open() ) : ?>
 	<?php else : // comments are closed ?>
-	<section class="comments">
 		<div class="notice">
 			<p class="bottom"><?php _e('Comments are closed.', 'basis') ?></p>
 		</div>
-	</section>
 	<?php endif; ?>
 <?php endif; ?>
 
-<?php if ( comments_open() ) : ?>
-	<section class="respond">
-		<h3><?php comment_form_title( __('Leave a Reply', 'basis'), __('Leave a Reply to %s', 'basis') ); ?></h3>
-		<p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
+<?php $comments_args = array(
+	'comment_notes_after' => '',
+);
 
-		<?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>
-
-			<p>
-				<?php printf( __('You must be <a href="%s">logged in</a> to post a comment.', 'basis'), wp_login_url( get_permalink() ) ); ?>
-			</p>
-
-		<?php else : ?>
-
-			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-				<?php if ( is_user_logged_in() ) : ?>
-
-					<p>
-						<?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'basis'), get_option('siteurl'), $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', 'basis'); ?>"><?php _e('Log out &raquo;', 'basis'); ?></a>
-					</p>
-
-				<?php else : ?>
-
-					<p>
-						<label for="author"><?php _e('Name', 'basis'); if ($req) _e(' (required)', 'basis'); ?></label>
-						<input type="text" class="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true' required"; ?>>
-					</p>
-					<p>
-						<label for="email"><?php _e('Email (will not be published)', 'basis'); if ($req) _e(' (required)', 'basis'); ?></label>
-						<input type="email" class="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true' required"; ?>>
-					</p>
-					<p>
-						<label for="url"><?php _e('Website', 'basis'); ?></label>
-						<input type="url" class="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="3">
-					</p>
-
-				<?php endif; ?>
-
-				<p>
-					<label for="comment"><?php _e('Comment', 'basis'); ?></label>
-					<textarea name="comment" id="comment" tabindex="4"></textarea>
-				</p>
-				<p>
-					<input name="submit" class="button" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'basis'); ?>">
-				</p>
-
-				<?php comment_id_fields(); ?>
-				<?php do_action('comment_form', $post->ID); ?>
-			</form>
-
-		<?php endif; // If registration required and not logged in ?>
-	</section>
-
-<?php endif; // if you delete this the sky will fall on your head ?>
+comment_form($comments_args); ?>
