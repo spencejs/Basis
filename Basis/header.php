@@ -56,6 +56,7 @@
 		<header class="header" role="banner">
 			<div class="logo"><a href="<?php echo home_url('/');?>/"><?php bloginfo('name'); ?></a></div>
 			<nav class="main-nav" role="navigation">
+				<h3 class="menu-toggle"><?php _e('Menu', 'basis'); ?></h3>
 				<?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
 			</nav>
 		</header>

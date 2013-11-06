@@ -154,7 +154,9 @@ h5{
  */
 
 .visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
+.visuallyhidden.focusable:focus,
+.screen-reader-text:active,
+.screen-reader-text:focus {
 	clip: auto;
 	height: auto;
 	margin: 0;
@@ -221,6 +223,10 @@ main{
 	}
 
 	/*BEGIN Nav*/
+
+.menu-toggle{
+	display:none;
+	}
 
 	.main-nav{
 

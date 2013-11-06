@@ -50,7 +50,7 @@
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 		?>
 		<nav class="navigation comment-navigation" role="navigation">
-			<h1 class="screen-reader-text section-heading"><?php _e( 'Comment navigation', 'basis' ); ?></h1>
+			<h1 class="screen-reader-text section-heading"><?php _e( 'Comment Navigation', 'basis' ); ?></h1>
 			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'basis' ) ); ?></div>
 			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'basis' ) ); ?></div>
 		</nav><!-- .comment-navigation -->
