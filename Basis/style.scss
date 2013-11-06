@@ -239,6 +239,7 @@ main{
 
 	@media (max-width: 700px) {
 		display:block;
+		cursor:pointer;
 		}
 	}
 
@@ -258,7 +259,6 @@ main{
 				background:#CFCFCF;
 				border-bottom: 0;
 				display:none;
-				height:auto;
 				left: 0;
 				overflow: hidden;
 				position:absolute;
@@ -268,17 +268,15 @@ main{
 
 			li {
 				display: block; /* One link per "row" */
+
+				&.current_page_item{
+					background:#999;
+					}
 				}
 
 			a {
 				display:inline-block;
 				padding:.5rem;
-
-				&:active {
-					border: 0;
-					z-index: 1; /* Active tab is on top */
-					background: linear-gradient(#666, #222);
-					}
 				}
 			}
 
@@ -287,7 +285,7 @@ main{
 					}
 		}
 
-	li.current_page_item a{
+	.current_page_item a{
 		color:$color-accent-hover;
 		}
 
