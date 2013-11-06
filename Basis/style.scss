@@ -226,9 +226,24 @@ main{
 
 .menu-toggle{
 	display:none;
+	position:relative;
+
+	&:after {
+		content: "☰"; /* "Three Line Menu Navicon" shows up */
+		position: absolute;
+		top: 8px;
+		right: 15px;
+		z-index: 2;
+		pointer-events: none;
+		}
+
+	@media (max-width: 700px) {
+		display:block;
+		}
 	}
 
 	.main-nav{
+		position:relative;
 
 		ul{
 			margin:0;
@@ -237,6 +252,39 @@ main{
 		li{
 			display:inline-block;
 			}
+
+		@media (max-width: 700px) {
+			ul {
+				background:#CFCFCF;
+				border-bottom: 0;
+				display:none;
+				height:auto;
+				left: 0;
+				overflow: hidden;
+				position:absolute;
+				right: 0;
+				z-index:10;
+				}
+
+			li {
+				display: block; /* One link per "row" */
+				}
+
+			a {
+				display:inline-block;
+				padding:.5rem;
+
+				&:active {
+					border: 0;
+					z-index: 1; /* Active tab is on top */
+					background: linear-gradient(#666, #222);
+					}
+				}
+			}
+
+			&.toggled-on ul{
+					display:block;
+					}
 		}
 
 	li.current_page_item a{

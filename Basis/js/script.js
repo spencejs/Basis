@@ -8,4 +8,9 @@ jQuery(document).ready(function($) {
 	// Basic FitVids Test
 	$("main").fitVids();
 
+	//Toggle for Responsive Menu
+	$( '.menu-toggle' ).on( 'click', function() {
+				$('.main-nav').toggleClass( 'toggled-on' );
+			} );
+
 });

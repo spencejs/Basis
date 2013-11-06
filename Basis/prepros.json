@@ -70,7 +70,8 @@
       "config": {
         "autoCompile": true,
         "uglify": true,
-        "mangle": true
+        "mangle": true,
+        "autoprefixerBrowsers": ""
       }
     },
     {
