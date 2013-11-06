@@ -17,7 +17,7 @@
 				<meta property="og:description" content="<?php $excerpt = strip_tags(get_the_excerpt()); echo $excerpt; ?>"/>
 				<?php if ( has_post_thumbnail() ) { 
 					$thumb_id = get_post_thumbnail_id();
-					$thumb_url = wp_get_attachment_image_src($thumb_id,’medium’, true); ?>
+					$thumb_url = wp_get_attachment_image_src($thumb_id,'medium', true); ?>
 					<meta property="og:image" content="<?php echo $thumb_url[0]; ?>" />
 				<?php } ?>
 			<?php endwhile; endif; ?>

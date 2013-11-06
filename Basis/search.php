@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main role="main">
-	<h1>Search for: <?php the_search_query(); ?></h1>
+	<h1><?php _e( 'Search for: ', 'basis' ); the_search_query(); ?></h1>
 
 	<?php if (have_posts()) : ?>
 
