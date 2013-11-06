@@ -72,6 +72,9 @@ add_theme_support( 'automatic-feed-links' );
 //html5 Markup
 add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
 
+//Custom Background
+add_theme_support( 'custom-background' );
+
 //Remove URL Field from Comment Form - Fights Spam
 add_filter('comment_form_default_fields', 'url_filtered');
 function url_filtered($fields)
