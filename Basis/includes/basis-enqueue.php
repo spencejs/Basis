@@ -31,8 +31,10 @@ function header_scripts() {
 	<![endif]-->
 
 	<?php // Echo the analytics code if provided in Theme Options
-	if (of_get_option('basis_google_analytics')) : 
-		echo '<script>'.of_get_option('basis_google_analytics').'</script>';
+	$options = get_option('thsp_cbp_theme_options');
+	$analytics = $options['basis_analytics_code'];
+	if ($analytics) : 
+		echo '<script>'.$analytics.'</script>';
 	endif;
 }
 

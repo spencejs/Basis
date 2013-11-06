@@ -70,6 +70,79 @@ function thsp_cbp_get_fields() {
 			
 		),
 
+		// Section ID
+		'background_section' => array(
+		
+			/*
+			 * We're checking if this is an existing section
+			 * or a new one that needs to be registered
+			 */
+			'existing_section' => false,
+			/*
+			 * Section related arguments
+			 * Codex - http://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_section
+			 */
+			'args' => array(
+				'title' => __( 'Background Images', 'my_theme_textdomain' ),
+				'description' => __( 'Each page will randomly load one of your background images.', 'my_theme_textdomain' ),
+				'priority' => 1
+			),
+			
+			/* 
+			 * This array contains all the fields that need to be
+			 * added to this section
+			 */
+			'fields' => array(
+
+				// BG Image 1
+				'background_1' => array(
+					'setting_args' => array(
+						'default' => '',
+						'type' => 'option',
+						'capability' => $thsp_cbp_capability,
+						'transport' => 'refresh',
+					),					
+					'control_args' => array(
+						'label' => __( 'Background Image 1', 'my_theme_textdomain' ),
+						'type' => 'image', // Image upload field control
+						'priority' => 6
+					)
+				),
+
+				// BG Image 2
+				'background_2' => array(
+					'setting_args' => array(
+						'default' => '',
+						'type' => 'option',
+						'capability' => $thsp_cbp_capability,
+						'transport' => 'refresh',
+					),					
+					'control_args' => array(
+						'label' => __( 'Background Image 2', 'my_theme_textdomain' ),
+						'type' => 'image', // Image upload field control
+						'priority' => 6
+					)
+				),
+
+				// BG Image 3
+				'background_3' => array(
+					'setting_args' => array(
+						'default' => '',
+						'type' => 'option',
+						'capability' => $thsp_cbp_capability,
+						'transport' => 'refresh',
+					),					
+					'control_args' => array(
+						'label' => __( 'Background Image 3', 'my_theme_textdomain' ),
+						'type' => 'image', // Image upload field control
+						'priority' => 6
+					)
+				),
+
+			),
+			
+		),
+
 		/*
 		 * Add fields to an existing Customizer section
 		 */
@@ -80,13 +153,13 @@ function thsp_cbp_get_fields() {
 				/*
 				 * ==============
 				 * ==============
-				 * Color field
+				 * Checkbox field
 				 * ==============
 				 * ==============
 				 */
 				'new_checkbox_field_colors' => array(
 					'setting_args' => array(
-						'default' => '',
+						'default' => true,
 						'type' => 'option',
 						'capability' => $thsp_cbp_capability,
 						'transport' => 'refresh',
@@ -94,7 +167,7 @@ function thsp_cbp_get_fields() {
 					'control_args' => array(
 						'label' => __( 'New color field label', 'my_theme_textdomain' ),
 						'type' => 'color', // Checkbox field control
-						'priority' => 3
+						'priority' => 1
 					)
 				)	
 						
