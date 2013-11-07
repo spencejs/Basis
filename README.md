@@ -143,3 +143,17 @@ For more information on using the WordPress Theme Customizer Boilerplate, visit 
 
 This is is where you should register any sidebars for use in your theme. A sidebar called "Primary Widget Area" is already registered here.
 
+## Changelog
+
+### Version 3.1
+
++ Switched to Wordpress' built-in HTML5 Search Form
++ Refined Comments template. Switched to Wordpress' built-in HTML5 Comment Form.
++ Added Theme Support for Custom Backgrounds.
++ Checked Internationalization setup.
++ Switched from Options Framework to Theme Customizer Boilerplate for more integrated theme options.
++ Added screenreader text for all Nav elements. Removes untitled Navs from document outline and increases accessibility.
++ Added a basic built-in Responsive Menu for the Main Nav.
++ Added a generic Print Stylesheet.
++ Switched to Wordpress' Bundled jQuery instead of the Google CDN version. Follows best practices better.
++ Switched to Minified versions of bundled Javascript files.
