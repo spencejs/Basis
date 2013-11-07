@@ -56,17 +56,15 @@
 		</nav><!-- .comment-navigation -->
 		<?php endif; // Check for comment navigation ?>
 	</section>
-<?php else : // this is displayed if there are no comments so far ?>
+<?php endif; ?>
+
 	<?php if ( comments_open() ) : ?>
+		<section class="comment-form">
+			<?php $comments_args = array('comment_notes_after' => '');
+			comment_form($comments_args); ?>
+		</section>
 	<?php else : // comments are closed ?>
 		<div class="notice">
 			<p class="bottom"><?php _e('Comments are closed.', 'basis') ?></p>
 		</div>
 	<?php endif; ?>
-<?php endif; ?>
-
-<?php $comments_args = array(
-	'comment_notes_after' => '',
-);
-
-comment_form($comments_args); ?>

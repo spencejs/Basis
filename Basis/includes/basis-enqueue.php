@@ -4,19 +4,17 @@
 ################################################################################
 
 function init_scripts() {
-	wp_deregister_script( 'jquery' );
 	wp_deregister_script( 'comment-reply' );
 
 	// Register Scripts
-	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
 	wp_register_script( 'comment-reply', site_url() . '/wp-includes/js/comment-reply.js');
-	wp_register_script( 'jquery-plugins', get_template_directory_uri() . '/js/plugins.js');
-	wp_register_script( 'jquery-scripts', get_template_directory_uri() . '/js/script.js');
+	wp_register_script( 'jquery-plugins', get_template_directory_uri() . '/js/min/plugins.min.js');
+	wp_register_script( 'jquery-scripts', get_template_directory_uri() . '/js/min/script.min.js');
 
 	// Queue Scripts
-	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', '', '1.8.3', true);
-	wp_enqueue_script('jquery-plugins', get_template_directory_uri() . '/js/plugins.js', 'jquery', '', true);
-	wp_enqueue_script('jquery-scripts', get_template_directory_uri() . '/js/script.js', 'jquery', '', true);
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jquery-plugins', get_template_directory_uri() . '/js/min/plugins.min.js', 'jquery', '', true);
+	wp_enqueue_script('jquery-scripts', get_template_directory_uri() . '/js/min/script.min.js', 'jquery', '', true);
 
 	// Queue Comment Reply if Threaded Comments Are Enabled
 	if ( get_option( 'thread_comments' ) && is_single()) wp_enqueue_script( 'comment-reply',  site_url() . '/wp-includes/js/comment-reply.js', 'jquery', '', true );

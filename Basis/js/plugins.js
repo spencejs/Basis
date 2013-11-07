@@ -1,8 +1,9 @@
 /*Whenever possible, add whatever plugins you are using to this file. This minimizes HTTP requests and speeds everything up. Minified code is best. */
 
-// remap jQuery to $
+// remap jQuery to $ (Wordpress runs jQuery in Safe Mode, usually forcing the use of 'jQuery' instead of '$')
+// Place any jQuery reliant plugins in here.
 (function($){
-
+	
 })(window.jQuery);
 
 

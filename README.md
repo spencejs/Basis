@@ -11,6 +11,7 @@ In creating Basis, I paid particular attention to semantics and best practices i
 + The `body` tag provides the outer wrapper for the site content. In other words, there is no div with a class or "wrapper", and the content width is defined by the `body` tag only.
 + Wherever possible, the code is marked up with [Microdata](http://schema.org) to add an extra layer of machine-readable information.
 + Wherever possible, ARIA roles are included for maximum accessibility to screen-readers and other assistive technologies.
++ Nav menus contain headers hidden with the .screen-reader-text class to provide an acurate document outline and screen reader navigation.
 
 ### An Awesome Document Head
 
@@ -26,7 +27,7 @@ Basis comes with all of the basic theme pages to jumpstart your theme developmen
 
 **Theme Pages:** 404, archive, front-page, index, page, search, single
 
-**Standard Wordpress Parts:** comments, footer, header, search form, sidebar
+**Standard Wordpress Parts:** comments, footer, header, sidebar
 
 **Custom Reusable Parts:** loop-list, loop-single, part-not_found, part-pagination, part-post_meta, part-footer_meta
 
@@ -50,11 +51,14 @@ The predefined CSS styles are what I consider to be a very basic starting place.
 + A modified version of the [HTML5 Boilerplate](http://html5boilerplate.com/) reset, with the addition of a box-sizing:border-box for all elements. If padding is not working as you expect, this is probably the culprit.
 + Clearfix hack - Applying a class of .clearfix to any element will cause it to self clear any internal floats.
 + Defines styles for several basic Wordpress classes, including .aligncenter, .alignright, .alignleft, and .wp-caption.
++ Defines styles for .visually-hidden and .screen-reader-text classes, coutesy of the [HTML5 Boilerplate](http://html5boilerplate.com/).
 + Centers and defines a max-width of 1000px for the main wrapper. I find that a width of 1000px makes it very easy to convert pixels to percentages for fluid layouts. E.g. 50% = 500px.
 + Defines a 70%/30% main column and sidebar.
 + Setup of basic media queries. Breaks the previously defined main column and sidebar elements into stacked 100%-width elements at 800px viewport.
++ Setup of a very basic responsive menu that switches to a toggleable menu below 800px. The JS for toggling the menu can be found in scripts.js.
 + Includes very basic typography, just to get you started.
 + REM units used for all typography. (If you need backwards compatibility, you should consider switching to EMs instead.)
++ Generic print styles adapted from the [HTML5 Boilerplate](http://html5boilerplate.com/). Inlined in the main stylesheet to avoid an additional HTTP request.
 
 ## Javascript
 
@@ -66,7 +70,8 @@ Basis includes the following jQuery plugins:
 Several script files are available and enqueued for your use:
 
 + **/js/plugins.js** - This a place for you to paste in your minified jQuery/Javascript plugins. Concatenating them all to this one file minimizes HTTP requests and speeds up page loads. The above-mentioned FitVids.js is in this file already.
-+ **/js/script.js** - This is where you can add your own scripts and trigger your plugins.
++ **/js/script.js** - This is where you can add your own scripts and trigger your plugins. Already setup to call FitVids and to toggle the responsive menu.
++ **Important Note** The minified versions of plugins.js and scripts.js are the ones actually enqueued in the theme. So it is important to compile to these locations when modifying the scripts, or to change basis-enqueue.php to call the unminified versions.
 + **/inlcludes/js/admin-scripts.js** - This is where you can add scripts for use in the Wordpress admin.
 
 ## Functions
@@ -75,7 +80,7 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 
 ### functions.php
 
-+ Includes the various theme functions files and loads the Options Framework (see basis-options.php below).
++ Includes the various theme functions files and loads the Theme Customizer Boilerplate (see basis-options.php below).
 + Sets Content Width to 700, the size of the main content column in the included CSS. Tweak to your needs.
 + Adds theme support for Post Thumbnails and registers a couple of sizes to get you started. Tweak the sizes and names to suit your theme.
 + Adds theme support for Custom Menus and registers two new menus - Primary and Utility - for use in the theme.
@@ -104,6 +109,8 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 + Removes WordPress version from RSS feed.
 + Adds Post Thumbnails to Feed.
 + Adds theme support for Automatic Feed Links.
++ Adds theme support for Custom Background Images.
++ Adds theme support for HTML5 Markup for comment forms, comment listings, and the search form.
 + Removes CSS from Recent Comments Widget and Wordpress Galleries.
 + Makes a number of tweaks to wp_head, including the removal of WP Generator.
 + Optimizes Robots.txt.
@@ -116,7 +123,7 @@ Use this file to add your own custom functions to a theme. Keeping these items i
 
 ### /includes/basis-enqueue.php
 
-+ Registers and enqueues custom scripts, including a CDN version of jQuery, the plugins.js file, the script.js file, and condtional loading of Wordpress' comment-reply.js
++ Registers and enqueues custom scripts, the plugins.min.js file, the script.min.js file, and condtional loading of Wordpress' comment-reply.js
 + Conditionally loads warning.js (see "Javascript" above) and the HTML5 Shim for IE8 and below.
 + Loads Google Analytics tracking code if provided in the Theme Options.
 
@@ -128,9 +135,9 @@ If you prefer to use another method to create your custom fields and meta boxes,
 
 ### /includes/basis-options.php
 
-Basis comes loaded with the **Options Framework v1.6 from [WPTheming.com](http://www.wptheming.com)**, which allows you to easily create a full-featured Theme Options page. This file contains a series of example tabs and fields. The final tab provides a field for Google Analytics code, which is actually used in the theme. If you remove this option, please also remove the call for the option data in the basis-enqueue.php file.
+Basis comes loaded with the **[WordPress Theme Customizer Boilerplate](https://github.com/slobodan/WordPress-Theme-Customizer-Boilerplate) from Slobodan**, which allows you to easily add new panels and options to the theme customizer page. The options you add here can be used for all sorts of things in your theme, like theme images, custom text, etcetera. This file contains a series of example tabs and fields. The first tab provides a field for Google Analytics code, which is actually used in the theme. If you remove this option, please also remove the call for the option data in the basis-enqueue.php file.
 
-For more information on using the Options Framework, visit [wptheming.com](http://www.wptheming.com).
+For more information on using the WordPress Theme Customizer Boilerplate, visit [the Github repo](https://github.com/slobodan/WordPress-Theme-Customizer-Boilerplate).
 
 ### /includes/basis-sidebars.php
 

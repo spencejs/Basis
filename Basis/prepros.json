@@ -1,10 +1,10 @@
 {
-  "id": "3d370a38",
-  "name": "Basis Dev",
+  "id": "1a5c8de2",
+  "name": "Basis",
   "files": [
     {
       "id": "6d2f2b82",
-      "pid": "3d370a38",
+      "pid": "1a5c8de2",
       "name": "editor-style.scss",
       "input": "editor-style.scss",
       "output": "editor-style.css",
@@ -23,7 +23,7 @@
     },
     {
       "id": "41e3fae3",
-      "pid": "3d370a38",
+      "pid": "1a5c8de2",
       "name": "admin-scripts.js",
       "type": "JS",
       "input": "includes\\js\\admin-scripts.js",
@@ -36,7 +36,7 @@
     },
     {
       "id": "299d6f9a",
-      "pid": "3d370a38",
+      "pid": "1a5c8de2",
       "name": "warning.js",
       "type": "JS",
       "input": "js\\ie6\\warning.js",
@@ -49,7 +49,7 @@
     },
     {
       "id": "d6dc2db1",
-      "pid": "3d370a38",
+      "pid": "1a5c8de2",
       "name": "plugins.js",
       "type": "JS",
       "input": "js\\plugins.js",
@@ -57,12 +57,13 @@
       "config": {
         "autoCompile": true,
         "uglify": true,
-        "mangle": true
+        "mangle": true,
+        "autoprefixerBrowsers": ""
       }
     },
     {
       "id": "a0233e7c",
-      "pid": "3d370a38",
+      "pid": "1a5c8de2",
       "name": "script.js",
       "type": "JS",
       "input": "js\\script.js",
@@ -76,7 +77,7 @@
     },
     {
       "id": "a8034bad",
-      "pid": "3d370a38",
+      "pid": "1a5c8de2",
       "name": "style.scss",
       "input": "style.scss",
       "output": "style.css",
