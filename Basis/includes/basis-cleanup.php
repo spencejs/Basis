@@ -336,4 +336,13 @@ function basis_robots() {
 	echo "Allow: /wp-content/uploads\n";
 	echo "Allow: /assets";
 }
+
+// Hide Email from Spam Bots using a short code. Usage: [email]john.doe@mysite.com[/email]
+function HideMail($atts , $content = null ){
+	if ( ! is_email ($content) )
+		return;
+
+	return '<a href="mailto:'.antispambot($content).'">'.antispambot($content).'</a>';
+}
+add_shortcode( 'email','HideMail');
 ?>

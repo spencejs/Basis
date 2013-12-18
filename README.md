@@ -116,6 +116,7 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 + Optimizes Robots.txt.
 + Gives a custom word length and More link to the excerpt.
 + Removes extraneous wrapper from Menus.
++ Adds a shortcode to obfuscate email addresses and turn them into mailto links. (Usage: [email]john.doe@mysite.com[/email])
 
 ### /includes/basis-custom.php
 
