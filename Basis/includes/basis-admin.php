@@ -69,6 +69,26 @@ function basis_remove_dashboard_widgets() {
 
 add_action('admin_init', 'basis_remove_dashboard_widgets');
 
+//Add All Custom Post Types to At A Glance Widget
+add_action('dashboard_glance_items', 'add_custom_post_counts');
+ 
+function add_custom_post_counts() {
+	$args=array(
+		'_builtin' => false,
+	);
+	$output = 'objects'; // names or objects
+	$post_types=get_post_types($args,$output);
+
+	foreach ($post_types as $post_type) :
+		$pt = $post_type->name;
+		$pt_info = get_post_type_object($pt); // get a specific CPT's details
+		$num_posts = wp_count_posts($pt); // retrieve number of posts associated with this CPT
+		$num = number_format_i18n($num_posts->publish); // number of published posts for this CPT
+		$text = _n( $pt_info->labels->singular_name, $pt_info->labels->name, intval($num_posts->publish) ); // singular/plural text label for CPT
+		echo '<li class="page-count '.$pt_info->name.'-count"><a href="edit.php?post_type='.$pt.'">'.$num.' '.$text.'</li>';
+	endforeach;
+}
+
 //Make Visual Editor Default
 add_filter( 'wp_default_editor', create_function('', 'return "tinymce";') );
 ?>
