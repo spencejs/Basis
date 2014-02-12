@@ -9,10 +9,10 @@ add_action('admin_init', 'basis_admin_init');
 function basis_admin_init() {
 	$home_url = site_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
-	
+
 	wp_register_style('basis_admin_css', "$home_url/wp-content/themes/$theme_name/includes/css/admin.css");
 	wp_enqueue_style('basis_admin_css');
-	
+
 	wp_register_script('basis_admin_js', "$home_url/wp-content/themes/$theme_name/includes/js/admin-scripts.js");
 	wp_enqueue_script('basis_admin_js');
 }
@@ -20,7 +20,7 @@ function basis_admin_init() {
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
-if (get_option('blogdescription') === 'Just another WordPress site') { 
+if (get_option('blogdescription') === 'Just another WordPress site') {
 	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please update your <a href="%s">site tagline</a>', 'basis'), admin_url('options-general.php')) . "</p></div>';"));
 };
 
@@ -40,7 +40,7 @@ if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
 
 // allow more tags in TinyMCE including iframes
 function basis_change_mce_options($options) {
-	$ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';	
+	$ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';
 	if (isset($initArray['extended_valid_elements'])) {
 		$options['extended_valid_elements'] .= ',' . $ext;
 	} else {
@@ -71,7 +71,7 @@ add_action('admin_init', 'basis_remove_dashboard_widgets');
 
 //Add All Custom Post Types to At A Glance Widget
 add_action('dashboard_glance_items', 'add_custom_post_counts');
- 
+
 function add_custom_post_counts() {
 	$args=array(
 		'_builtin' => false,
@@ -91,4 +91,11 @@ function add_custom_post_counts() {
 
 //Make Visual Editor Default
 add_filter( 'wp_default_editor', create_function('', 'return "tinymce";') );
+
+//Hide Links Panel in Admin
+add_action( 'admin_menu', 'my_admin_menu' );
+
+function my_admin_menu() {
+	remove_menu_page('link-manager.php');
+}
 ?>

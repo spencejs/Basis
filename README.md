@@ -101,6 +101,8 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 + Adds editor-style.css to TinyMCE, so you can add your own type styles for a more accurate preview.
 + Removes all of my least favorite Dashboard Widgets, including Incoming Links, Plugins, Wordpress Development Blog, and Other Wordpress News.
 + Ensures that the Visual Editor is default for TinyMCE (can easily be changed to set Text as default).
++ Automatically adds all Custom Post Types to the At A Glance dashboard widget.
++ Hides the Links panel in the admin.
 
 ### /includes/basis-cleanup.php
 
