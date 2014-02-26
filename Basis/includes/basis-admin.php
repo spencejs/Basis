@@ -85,7 +85,7 @@ function add_custom_post_counts() {
 		$num_posts = wp_count_posts($pt); // retrieve number of posts associated with this CPT
 		$num = number_format_i18n($num_posts->publish); // number of published posts for this CPT
 		$text = _n( $pt_info->labels->singular_name, $pt_info->labels->name, intval($num_posts->publish) ); // singular/plural text label for CPT
-		echo '<li class="page-count '.$pt_info->name.'-count"><a href="edit.php?post_type='.$pt.'">'.$num.' '.$text.'</li>';
+		echo '<li class="page-count '.$pt_info->name.'-count"><a href="edit.php?post_type='.$pt.'">'.$num.' '.$text.'</a></li>';
 	endforeach;
 }
 
