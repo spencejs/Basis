@@ -112,8 +112,8 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 + Adds Post Thumbnails to Feed.
 + Adds theme support for Automatic Feed Links.
 + Adds theme support for Custom Background Images.
-+ Adds theme support for HTML5 Markup for comment forms, comment listings, and the search form.
-+ Removes CSS from Recent Comments Widget and Wordpress Galleries.
++ Adds theme support for HTML5 Markup for comment forms, comment listings, the search form, galleries, and captions.
++ Removes CSS from Recent Comments Widget.
 + Makes a number of tweaks to wp_head, including the removal of WP Generator.
 + Optimizes Robots.txt.
 + Gives a custom word length and More link to the excerpt.

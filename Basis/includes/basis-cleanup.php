@@ -53,7 +53,7 @@ function feedFilter($query) {
 	return $query;
 }
 add_filter('pre_get_posts','feedFilter');
- 
+
 function feedContentFilter($content) {
 	$thumbId = get_post_thumbnail_id();
 
@@ -62,7 +62,7 @@ function feedContentFilter($content) {
 		$image = '<img align="left" src="'. $img[0] .'" alt="" width="'. $img[1] .'" height="'. $img[2] .'" />';
 		echo $image;
 	}
- 
+
 	return $content;
 }
 
@@ -70,7 +70,7 @@ function feedContentFilter($content) {
 add_theme_support( 'automatic-feed-links' );
 
 //html5 Markup
-add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
+add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 
 //Custom Background
 add_theme_support( 'custom-background' );
@@ -108,11 +108,6 @@ function basis_remove_recent_comments_style() {
 	}
 }
 
-// remove CSS from gallery
-function basis_gallery_style($css) {
-	return preg_replace("/<style type='text\/css'>(.*?)<\/style>/s", '', $css);
-}
-
 function basis_head_cleanup() {
 	// http://wpengineer.com/1438/wordpress-header/
 	remove_action('wp_head', 'feed_links_extra', 3);
@@ -124,143 +119,38 @@ function basis_head_cleanup() {
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-	remove_action('wp_head', 'noindex', 1);	
+	remove_action('wp_head', 'noindex', 1);
 	add_action('wp_head', 'basis_noindex');
-	remove_action('wp_head', 'rel_canonical');	
+	remove_action('wp_head', 'rel_canonical');
 	add_action('wp_head', 'basis_rel_canonical');
-	add_action('wp_head', 'basis_remove_recent_comments_style', 1);	
-	add_filter('gallery_style', 'basis_gallery_style');
+	add_action('wp_head', 'basis_remove_recent_comments_style', 1);
 
 	// deregister l10n.js (new since WordPress 3.1)
 	// why you might want to keep it: http://wordpress.stackexchange.com/questions/5451/what-does-l10n-js-do-in-wordpress-3-1-and-how-do-i-remove-it/5484#5484
 	if (!is_admin()) {
 		wp_deregister_script('l10n');
-	}	
+	}
 }
 
 add_action('init', 'basis_head_cleanup');
-
-// cleanup gallery_shortcode()
-function basis_gallery_shortcode($attr) {
-	global $post, $wp_locale;
-
-	static $instance = 0;
-	$instance++;
-
-	// Allow plugins/themes to override the default gallery template.
-	$output = apply_filters('post_gallery', '', $attr);
-	if ( $output != '' )
-		return $output;
-
-	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-	if ( isset( $attr['orderby'] ) ) {
-		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-		if ( !$attr['orderby'] )
-			unset( $attr['orderby'] );
-	}
-
-	extract(shortcode_atts(array(
-		'order'      => 'ASC',
-		'orderby'    => 'menu_order ID',
-		'id'         => $post->ID,
-		'icontag'    => 'figure',
-		'captiontag' => 'figcaption',
-		'columns'    => 3,
-		'size'       => 'thumbnail',
-		'include'    => '',
-		'exclude'    => ''
-	), $attr));
-
-	$id = intval($id);
-	if ( 'RAND' == $order )
-		$orderby = 'none';
-
-	if ( !empty($include) ) {
-		$include = preg_replace( '/[^0-9,]+/', '', $include );
-		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-
-		$attachments = array();
-		foreach ( $_attachments as $key => $val ) {
-			$attachments[$val->ID] = $_attachments[$key];
-		}
-	} elseif ( !empty($exclude) ) {
-		$exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
-		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-	} else {
-		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-	}
-
-	if ( empty($attachments) )
-		return '';
-
-	if ( is_feed() ) {
-		$output = "\n";
-		foreach ( $attachments as $att_id => $attachment )
-			$output .= wp_get_attachment_link($att_id, $size, true) . "\n";
-		return $output;
-	}
-
-	$captiontag = tag_escape($captiontag);
-	$columns = intval($columns);
-	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-	$float = is_rtl() ? 'right' : 'left';
-
-	$selector = "gallery-{$instance}";
-
-	$gallery_style = $gallery_div = '';
-	if ( apply_filters( 'use_default_gallery_style', true ) )
-		$gallery_style = "";
-	$size_class = sanitize_html_class( $size );
-	$gallery_div = "<section id='$selector' class='clearfix gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-	$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
-
-	$i = 0;
-	foreach ( $attachments as $id => $attachment ) {
-		// make the gallery link to the file by default instead of the attachment
-		// thanks to Matt Price (countingrows.com)
-    $link = isset($attr['link']) && $attr['link'] === 'attachment' ? 
-      wp_get_attachment_link($id, $size, true, false) : 
-      wp_get_attachment_link($id, $size, false, false);
-		$output .= "
-			<{$icontag} class=\"gallery-item\">
-				$link
-			";
-		if ( $captiontag && trim($attachment->post_excerpt) ) {
-			$output .= "
-				<{$captiontag} class=\"gallery-caption\">
-				" . wptexturize($attachment->post_excerpt) . "
-				</{$captiontag}>";
-		}
-		$output .= "</{$icontag}>";
-		if ( $columns > 0 && ++$i % $columns == 0 )
-			$output .= '';
-	}
-
-	$output .= "</section>\n";
-
-	return $output;
-}
-
-remove_shortcode('gallery');
-add_shortcode('gallery', 'basis_gallery_shortcode');
 
 // excerpt cleanup
 // make changes here to suit your excerpt needs
 
 	// Set number of words in the excerpt
-function basis_excerpt_length($length) {
-	return 40;
-}
+	function basis_excerpt_length($length) {
+		return 40;
+	}
 
 	// Set text for Continue Reading link
-function basis_continue_reading_link() {
-	return ' <a href="' . get_permalink() . '" class="more-link">' . __( ' Read More', 'basis' ) . '</a>';
-}
+	function basis_continue_reading_link() {
+		return ' <a href="' . get_permalink() . '" class="more-link">' . __( ' Read More', 'basis' ) . '</a>';
+	}
 
 	// auto add ellipses
-function basis_auto_excerpt_more($more) {
-	return ' &hellip;' . basis_continue_reading_link();
-}
+	function basis_auto_excerpt_more($more) {
+		return ' &hellip;' . basis_continue_reading_link();
+	}
 
 add_filter('excerpt_length', 'basis_excerpt_length');
 add_filter('excerpt_more', 'basis_auto_excerpt_more');
