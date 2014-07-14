@@ -15,7 +15,7 @@
 				<!-- Facebook Open Graph Meta for Single Posts -->
 				<meta property="og:image" content="<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail' ); echo $thumb['0']; ?> "/>
 				<meta property="og:description" content="<?php $excerpt = strip_tags(get_the_excerpt()); echo $excerpt; ?>"/>
-				<?php if ( has_post_thumbnail() ) { 
+				<?php if ( has_post_thumbnail() ) {
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url = wp_get_attachment_image_src($thumb_id,'medium', true); ?>
 					<meta property="og:image" content="<?php echo $thumb_url[0]; ?>" />
@@ -44,7 +44,6 @@
 		<?php endif; ?>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 		<?php wp_head(); ?>
