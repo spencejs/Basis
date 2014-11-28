@@ -1,9 +1,10 @@
 
 	<!--Show pagination links if applicable.-->
 	<?php if ($wp_query->max_num_pages > 1) : ?>
-	<nav class="post-nav">
-		<h1 class="screen-reader-text"><?php _e('Posts Navigation', 'basis'); ?></h1>
-		<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'basis' ) ); ?></div>
-		<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'basis' ) ); ?></div>
-	</nav>
+		<?php if ($wp_query->max_num_pages > 2) $both_links = 'both-links'; ?>
+		<nav class="post-nav <?php echo $both_links; ?>">
+			<h1 class="screen-reader-text"><?php _e('Posts Navigation', 'basis'); ?></h1>
+			<?php next_posts_link( __( '&larr; Older posts', 'basis' ) ); ?>
+			<?php previous_posts_link( __( 'Newer posts &rarr;', 'basis' ) ); ?>
+		</nav>
 	<?php endif; ?>

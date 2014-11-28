@@ -235,4 +235,17 @@ function HideMail($atts , $content = null ){
 	return '<a href="mailto:'.antispambot($content).'">'.antispambot($content).'</a>';
 }
 add_shortcode( 'email','HideMail');
+
+//////////////////////////////////////////////////
+//Add Classes to Next/Previous Posts Links
+//////////////////////////////////////////////////
+add_filter('next_posts_link_attributes', 'posts_link_attributes_1');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes_2');
+
+function posts_link_attributes_1() {
+	return 'class="older-posts"';
+}
+function posts_link_attributes_2() {
+	return 'class="newer-posts"';
+}
 ?>

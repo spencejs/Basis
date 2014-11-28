@@ -119,6 +119,7 @@ Basis includes a pretty robust set of functions that tweak and enhance your Word
 + Gives a custom word length and More link to the excerpt.
 + Removes extraneous wrapper from Menus.
 + Adds a shortcode to obfuscate email addresses and turn them into mailto links. (Usage: [email]john.doe@mysite.com[/email])
++ Adds helpful classes to the defaul next_posts_page and previous_post_page functions.
 
 ### /includes/basis-custom.php
 
