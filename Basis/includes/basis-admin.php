@@ -7,13 +7,11 @@
 add_action('admin_init', 'basis_admin_init');
 
 function basis_admin_init() {
-	$home_url = site_url();
-	$theme_name = next(explode('/themes/', get_template_directory()));
 
-	wp_register_style('basis_admin_css', "$home_url/wp-content/themes/$theme_name/includes/css/admin.css");
+	wp_register_style('basis_admin_css', get_template_directory_uri() . '/includes/css/admin.css');
 	wp_enqueue_style('basis_admin_css');
 
-	wp_register_script('basis_admin_js', "$home_url/wp-content/themes/$theme_name/includes/js/admin-scripts.js");
+	wp_register_script('basis_admin_js', get_template_directory_uri() . ' /includes/js/admin-scripts.js');
 	wp_enqueue_script('basis_admin_js');
 }
 
