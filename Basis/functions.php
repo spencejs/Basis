@@ -12,6 +12,9 @@ locate_template(array('includes/basis-meta-boxes.php'), true, true);		// Meta Bo
 //Set Content Width
 if ( ! isset( $content_width ) ) $content_width = 700;
 
+//Wordpress Title
+add_theme_support( 'title-tag' );
+
 //Post Thumbnails
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size( 150, 120, true ); // Normal post thumbnails
