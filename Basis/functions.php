@@ -9,12 +9,6 @@ locate_template(array('includes/basis-cleanup.php'), true, true);	// code cleanu
 locate_template(array('includes/basis-custom.php'), true, true);		// custom functions
 locate_template(array('includes/basis-meta-boxes.php'), true, true);		// Meta Boxes
 
-// Load the Options Panel
-if ( !function_exists( 'optionsframework_init' ) ) {
-	define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/includes/options-framework/' );
-	locate_template(array('includes/options-framework/options-framework.php'), true, true);
-}
-
 //Set Content Width
 if ( ! isset( $content_width ) ) $content_width = 700;
 
