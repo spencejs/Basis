@@ -1,0 +1,53 @@
+/* ============================================================
+	SASS Goodies
+============================================================ */
+
+$color-text:			#000;
+$color-text-light:		#444;
+$color-text-lighter:	#969696;
+$color-grey-light:		#cfd1d5;
+$color-grey-medium:		#58585a;
+$color-grey-dark:		#403a3a;
+$color-link:			#b5121b;
+$color-link-hover:		#fc4349;
+
+$margin-standard:		1.3rem;
+
+$border-basic:			1px solid $color-grey-light;
+$border-thick:			2px solid $color-grey-medium;
+
+$font-primary:			'Source Sans Pro', sans-serif;
+
+@mixin border-standard($color: $color-text-lighter, $side: bottom) {
+	border-#{$side}: 1px solid $color;
+	}
+
+@mixin breakpoint($point) {
+	@if $point == egg {
+		@media (min-width: 20em) { @content; }
+		}
+	@if $point == embryo {
+		@media (min-width: 35em) { @content; }
+		}
+	@if $point == infant {
+		@media (min-width: 40em) { @content; }
+		}
+	@else if $point == baby {
+		@media (min-width: 50em) { @content; }
+		}
+	@else if $point == child {
+		@media (min-width: 60em) { @content; }
+		}
+	@else if $point == base {
+		@media (min-width: 65em) { @content; }
+		}
+	@else if $point == youngman {
+		@media (min-width: 85em) { @content; }
+		}
+	@else if $point == adult {
+		@media (min-width: 90em) { @content; }
+		}
+	@else if $point == old {
+		@media (min-width: 105em) { @content; }
+		}
+}

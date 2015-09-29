@@ -1,0 +1,71 @@
+/////////////////////////////////////////////////
+// Site Header
+/////////////////////////////////////////////////
+
+.logo{
+	font-size:2.625rem;
+	line-height:3rem;
+	}
+
+	/*BEGIN Nav*/
+
+.menu-toggle{
+	display:none;
+	position:relative;
+
+	&:after {
+		content: "☰"; /* "Three Line Menu Navicon" shows up */
+		position: absolute;
+		top: 8px;
+		right: 15px;
+		z-index: 2;
+		pointer-events: none;
+		}
+
+	@media (max-width: 800px) {
+		display:block;
+		cursor:pointer;
+		}
+	}
+
+	.main-nav{
+		position:relative;
+
+		ul{
+			margin:0;
+			}
+
+		li{
+			display:inline-block;
+			}
+
+		@media (max-width: 800px) {
+			ul {
+				background:#CFCFCF;
+				display:none;
+				}
+
+			li {
+				display: block; /* One link per "row" */
+
+				&.current_page_item{
+					background:#999;
+					}
+				}
+
+			a {
+				display:inline-block;
+				padding:.5rem;
+				}
+			}
+
+			&.toggled-on ul{
+					display:block;
+					}
+		}
+
+	.current_page_item a{
+		color:$color-link-hover;
+		}
+
+	/*END Nav*/

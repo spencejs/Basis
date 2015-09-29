@@ -10,179 +10,32 @@ License URI: http://en.wikipedia.org/wiki/WTFPL
 Tags: starter
 */
 
-/*TABLE OF CONTENTS -
+@import 'scss/sass';
+@import 'scss/reset';
+@import 'scss/elements';
+@import 'scss/header';
+@import 'scss/pages';
+@import 'scss/home';
+@import 'scss/posts';
+@import 'scss/footer';
+@import 'scss/print';
 
-	-SASS Goodies
-	-Reset
-	-Typography
-	-Classes
-	-Forms
-	-Structure
-	-Header
-		-Nav
-	-Post
-	-Print Styles
-
-- END TABLE OF CONTENTS*/
-
-/*BEGIN SASS Goodies*/
-
-$color-text:			#333;
-$color-text-light:		#999;
-$color-accent:			#179aa7;
-$color-accent-hover:	#00ccee;
-
-$margin-standard:		1rem;
-
-/*END SASS Goodies*/
-
-/*BEGIN Reset*/
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,nav,section,main{border:0;box-sizing:border-box;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}
-article,aside,figure,footer,header,nav,section,main{display:block}
-ul{list-style:outside;margin-left:1.3rem}
-ol{list-style:decimal outside;margin-left:1.3rem}
-nav ul{list-style:none}
-blockquote,q{quotes:none}
-blockquote:before,blockquote:after,q:before,q:after{content:none}
-a{font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0}
-ins{background-color:#ff9;color:#000;text-decoration:none}
-mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
-del{text-decoration:line-through}
-abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help}
-table{border-collapse:collapse;border-spacing:0}
-hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1rem 0;padding:0}
-input,select{vertical-align:middle;box-sizing:border-box;}
-img{max-width:100%;height:auto;}
-video{width:100%;height:auto; width:auto;}
-small{font-size:80%}
-sub,sup{font-size:75%;line-height:0;position: relative;vertical-align: baseline}
-sup{top:-0.5rem}
-sub{bottom:-0.25rem}
-svg:not(:root){overflow: hidden}
-/*END Reset*/
-
-/*BEGIN Typography*/
-
-body{
-	color:$color-text;
-	line-height:1.5;
-	}
-
-p,h1,h2,h3,h4,h5,ul,ol,blockquote{
-	margin-bottom:$margin-standard;
-	}
-
-p{
-	}
-
-a{
-	color:$color-accent;
-	text-decoration:none;
-
-	&:hover{
-		color:$color-accent-hover;
-		}
-	}
-
-h1{
-	font-size:2.625rem;
-	line-height:3rem;
-	}
-
-h2{
-	font-size:2.125rem;
-	line-height:2.5rem;
-	margin-top:2rem;
-	}
-
-h3{
-	font-size:1.625rem;
-	line-height:2rem;
-	margin-top:2rem;
-	}
-
-h4{
-	font-size:1.313rem;
-	line-height:1.5rem;
-	margin-top:2rem;
-	}
-
-h5{
-	margin-top:2rem;
-	}
-
-/*END Typography*/
-
-/*BEGIN Classes*/
-
-/*micro clearfix: h5bp.com/v*/
-.clearfix:before,
-.clearfix:after {
-	content: " "; /* 1 */
-	display: table; /* 2 */
-}
-
-.clearfix:after {
-	clear: both;
-}
-
-.aligncenter { display:block; margin:0 auto }
-.alignleft { float:left; margin: 0 $margin-standard $margin-standard 0;}
-.alignright { float:right; margin:0 0 $margin-standard $margin-standard;}
-.wp-caption { padding:10px; margin:10px }
-.wp-caption-text{}
-.sticky{}
-.gallery-caption{}
-.bypostauthor{}
-
-/*
- * Hide only visually, but have it available for screenreaders: h5bp.com/v
- */
-
-.visuallyhidden, .screen-reader-text{
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-
-/*
- * Extends the .visuallyhidden class to allow the element to be focusable
- * when navigated to via the keyboard: h5bp.com/p
- */
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus,
-.screen-reader-text:active,
-.screen-reader-text:focus {
-	clip: auto;
-	height: auto;
-	margin: 0;
-	overflow: visible;
-	position: static;
-	width: auto;
-}
-
-/*END Classes*/
-
-/*BEGIN Forms*/
-
-/*END Forms*/
 
 /*BEGIN Structure*/
 
 html{
+	background-color: white;
 	height:100%;
 	}
 
 body{
-	margin:0 auto;
-	max-width:1040px;
-	padding:20px;
+	max-width:1000px;
+	margin: 0 $margin-standard;
+	position: relative;
+
+	@include breakpoint(base) {
+		margin:0 auto;
+		}
 	}
 
 .header{
@@ -216,170 +69,3 @@ main{
 	}
 
 /*END Structure*/
-
-/*BEGIN Header*/
-
-.logo{
-	font-size:2.625rem;
-	line-height:3rem;
-	}
-
-	/*BEGIN Nav*/
-
-.menu-toggle{
-	display:none;
-	position:relative;
-
-	&:after {
-		content: "☰"; /* "Three Line Menu Navicon" shows up */
-		position: absolute;
-		top: 8px;
-		right: 15px;
-		z-index: 2;
-		pointer-events: none;
-		}
-
-	@media (max-width: 800px) {
-		display:block;
-		cursor:pointer;
-		}
-	}
-
-	.main-nav{
-		position:relative;
-
-		ul{
-			margin:0;
-			}
-
-		li{
-			display:inline-block;
-			}
-
-		@media (max-width: 800px) {
-			ul {
-				background:#CFCFCF;
-				display:none;
-				}
-
-			li {
-				display: block; /* One link per "row" */
-
-				&.current_page_item{
-					background:#999;
-					}
-				}
-
-			a {
-				display:inline-block;
-				padding:.5rem;
-				}
-			}
-
-			&.toggled-on ul{
-					display:block;
-					}
-		}
-
-	.current_page_item a{
-		color:$color-accent-hover;
-		}
-
-	/*END Nav*/
-
-/*END Header*/
-
-/*BEGIN Post*/
-
-time{
-	color:$color-text-light;
-	}
-
-/*END Post*/
-
-/*BEGIN Print Styles (h5bp.com/r)*/
-
-@media print {
-	main{
-		width:100%;
-		}
-
-	.sidebar{
-		display:none;
-		}
-
-	.main-nav ul{
-		display:block;
-		}
-
-	.menu-toggle:after {
-		content: "";
-	}
-
-	* {
-		background: transparent !important;
-		color: #000 !important; /* Black prints faster: h5bp.com/s */
-		box-shadow: none !important;
-		text-shadow: none !important;
-	}
-
-	a,
-	a:visited {
-		text-decoration: underline;
-	}
-
-	a[href]:after {
-		content: " (" attr(href) ")";
-	}
-
-	abbr[title]:after {
-		content: " (" attr(title) ")";
-	}
-
-	/*
-	 * Don't show links for images, or javascript/internal links
-	 */
-
-	.ir a:after,
-	a[href^="javascript:"]:after,
-	a[href^="#"]:after {
-		content: "";
-	}
-
-	pre,
-	blockquote {
-		border: 1px solid #999;
-		page-break-inside: avoid;
-	}
-
-	thead {
-		display: table-header-group; /* h5bp.com/t */
-	}
-
-	tr,
-	img {
-		page-break-inside: avoid;
-	}
-
-	img {
-		max-width: 100% !important;
-	}
-
-	@page {
-		margin: 0.5cm;
-	}
-
-	p,
-	h2,
-	h3 {
-		orphans: 3;
-		widows: 3;
-	}
-
-	h2,
-	h3 {
-		page-break-after: avoid;
-	}
-}
-
-/*END Print Styles*/

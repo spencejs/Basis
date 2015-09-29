@@ -1,0 +1,351 @@
+/* =============================================================
+/* =============================================================
+	Basic HTML
+================================================================
+============================================================  */
+
+
+/* ============================================================
+	Core Typography
+============================================================ */
+
+html{
+	background: white;
+	color: $color-text;
+	font-family: $font-primary;
+	line-height: 1.65;
+
+	@include breakpoint(baby) {
+		font-size: 105%;
+		line-height: 1.5;
+		}
+
+	@include breakpoint(base) {
+		font-size: 110%;
+		line-height: 1.6;
+		}
+	}
+
+p {margin-bottom: $margin-standard;}
+
+a{
+	color: $color-link;
+	text-decoration: none;
+	transition: color .5s;
+
+	&:hover{
+		border-bottom: 1px solid;
+		color: $color-link-hover;
+		}
+	}
+
+h1, h2 {
+	font-weight: 300;
+	line-height: 1.2;
+
+	a{
+		text-decoration: none;
+		}
+	}
+
+h1 {
+	font-size: 2.533rem;
+	}
+
+h2 {
+	font-size: 1.867rem;
+	margin-bottom: $margin-standard;
+	}
+
+h3 {
+	font-size: 1.2rem;
+	font-weight: normal;
+	margin: $margin-standard 0;
+	}
+
+h4 {
+	font-weight: bold;
+	}
+
+/* ============================================================
+	Icons
+============================================================ */
+
+svg {
+	fill: currentColor;
+	}
+
+.icon{
+	height: $margin-standard;
+	width: $margin-standard;
+	vertical-align: -.1rem;
+
+	a &, button &{
+		transform: scale(.833333);
+		transition: .3s;
+		}
+
+	a:hover &, , a:active &, button:hover &{
+		transform: scale(1);
+		transition: .3s;
+		}
+	}
+
+/* ============================================================
+	Special Formatting
+============================================================ */
+
+small {
+	font-size:.707rem;
+	margin: $margin-standard/2 0;
+	}
+
+time{
+	color: $color-text-light;
+	}
+
+blockquote{
+	font-style: italic;
+	position: relative;
+	quotes: "\201C" "\201D" "\2018" "\2019";
+
+	p{
+		margin: 0;
+		}
+	}
+
+blockquote::before{
+	content: open-quote;
+	font-size: 125%;
+	left: -0.75em;
+	position: absolute;
+	top: -0.25em;
+	}
+
+blockquote::after{
+	content: close-quote;
+	}
+
+cite{
+	font-style: normal;
+	font-weight: 600;
+	}
+
+q {
+	quotes: "\201C" "\201D" "\2018" "\2019";
+	}
+
+q::before { content: open-quote; }
+q::after { content: close-quote; }
+
+code, samp {
+	color: #b03;
+	font-family: 'DejaVu Sans Mono',Inconsolata,Consolas,'Lucida Console',monospace;
+	}
+
+kbd {
+	color: #666;
+	font-family: inherit;
+	font-size: 87.5%;
+	line-height: 90%;
+	background-color: #f9f9f9;
+	margin: 0 0.25em;
+	border: $border-basic;
+	border-radius: 4px;
+	padding: 0.3334em 0.5em;
+	box-shadow: inset 0 1px 0 #fff;
+	}
+
+ins {
+	background-color: $color-text-lighter;
+	}
+
+
+/* ============================================================
+	Lists
+============================================================ */
+
+ul, ol{
+	margin-bottom: $margin-standard;
+
+	ul, ol{
+		margin-bottom: 0;
+		}
+	}
+
+dt {
+	font-weight: bold;
+	}
+
+
+/* ============================================================
+	Tabular data
+============================================================ */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	min-width: 100%;
+	margin-bottom: $margin-standard*2;
+	}
+
+caption {
+	caption-side: bottom;
+	color: $color-text-light;
+	font-size: 0.75rem;
+	line-height: 1.333;
+	text-align: left;
+	margin: $margin-standard 0;
+	}
+
+thead {
+	border-bottom: $border-thick;
+	}
+
+td, th {
+	border-bottom: $border-basic;
+	border-collapse: collapse;
+	padding: $margin-standard/1.5;
+	text-align: left;
+	vertical-align: top;
+	}
+
+th {
+	color: white;
+	font-weight: 700;
+	padding-bottom: 0.5em; /* 8px */
+	}
+
+
+/* ============================================================
+	Figures
+============================================================ */
+
+figure{
+	margin-bottom: $margin-standard;
+	}
+
+figcaption {
+	color: $color-text-light;
+	font-size: .85rem;
+	line-height: 1.3334;
+	padding: $margin-standard/2 0;
+	clear: left;
+	}
+
+
+/* =============================================================
+	Forms
+============================================================  */
+
+
+label, form small{
+	display: block;
+	}
+
+input[type="text"], input[type="tel"], input[type="email"], input[type="number"], input[type="search"], textarea, select{
+	border: 1px solid $color-text;
+	box-sizing: border-box;
+	font-size: 1rem;
+	outline: none;
+	padding: $margin-standard/4;
+	width: 100%;
+
+	&:focus, &:active{
+		box-shadow: 3px 3px 0 $color-link-hover;
+		}
+	}
+
+button, input[type="submit"], input[type="button"]{
+	border: none;
+	background-color: transparent;
+	display: block;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-top: $margin-standard/2;
+	text-align: right;
+	text-transform: uppercase;
+	transition: all .1s;
+	vertical-align: baseline;
+	width: 100%;
+
+	@include breakpoint(baby) {
+		display: inline-block;
+		}
+
+	&:hover, &:focus, &:active{
+		border-bottom: 1px solid $color-link;
+		}
+	}
+
+.wpcf7-radio span.wpcf7-list-item{
+	display: block;
+	margin: 0 0 $margin-standard/2;
+	}
+
+.required:after{
+	content: '*';
+	color: $color-link;
+	}
+
+/* =============================================================
+/* =============================================================
+	General Classes
+================================================================
+============================================================  */
+
+
+/* ============================================================
+	Micro Clearfix
+============================================================ */
+
+.clearfix:before,
+.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/* ============================================================
+	Wordpress Classes
+============================================================ */
+.aligncenter { display:block; margin:0 auto }
+.alignleft { float:left; margin: 0 $margin-standard $margin-standard 0;}
+.alignright { float:right; margin:0 0 $margin-standard $margin-standard;}
+.wp-caption { padding:$margin-standard; margin:$margin-standard }
+
+
+/* =============================================================
+	Hide only visually, but have it available for screenreaders: h5bp.com/v
+============================================================  */
+
+.visuallyhidden, .screen-reader-text{
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+	}
