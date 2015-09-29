@@ -20,8 +20,9 @@ Tags: starter
 @import 'scss/footer';
 @import 'scss/print';
 
-
-/*BEGIN Structure*/
+///////////////////////////////////////////////////
+// Basic Structure
+///////////////////////////////////////////////////
 
 html{
 	background-color: white;
@@ -37,35 +38,3 @@ body{
 		margin:0 auto;
 		}
 	}
-
-.header{
-	margin-bottom:$margin-standard;
-	}
-
-main{
-	float:left;
-	padding-right:6%;
-	width:70%;
-
-	@media screen and (max-width: 800px) {
-		float:none;
-		padding-right:0;
-		width:100%;
-		}
-	}
-
-.sidebar{
-	float:left;
-	width:30%;
-
-	@media screen and (max-width: 800px) {
-		float:none;
-		width:100%;
-		}
-	}
-
-.footer{
-	clear:both;
-	}
-
-/*END Structure*/
