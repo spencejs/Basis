@@ -24,12 +24,12 @@ function thsp_cbp_get_fields() {
 	 * Using helper function to get default required capability
 	 */
 	$thsp_cbp_capability = thsp_cbp_capability();
-	
+
 	$options = array(
 
 		// Section ID
 		'analytics_section' => array(
-		
+
 			/*
 			 * We're checking if this is an existing section
 			 * or a new one that needs to be registered
@@ -40,12 +40,12 @@ function thsp_cbp_get_fields() {
 			 * Codex - http://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_section
 			 */
 			'args' => array(
-				'title' => __( 'Analytics', 'my_theme_textdomain' ),
-				'description' => __( 'Add Analytics Code', 'my_theme_textdomain' ),
+				'title' => __( 'Analytics', 'basis' ),
+				'description' => __( 'Add Analytics Code', 'basis' ),
 				'priority' => 2
 			),
-			
-			/* 
+
+			/*
 			 * This array contains all the fields that need to be
 			 * added to this section
 			 */
@@ -58,16 +58,16 @@ function thsp_cbp_get_fields() {
 						'type' => 'option',
 						'capability' => $thsp_cbp_capability,
 						'transport' => 'refresh',
-					),					
+					),
 					'control_args' => array(
-						'label' => __( 'Analytics Code', 'my_theme_textdomain' ),
+						'label' => __( 'Analytics Code', 'basis' ),
 						'type' => 'textarea', // Textarea control
 						'priority' => 7
 					)
 				)
 
 			),
-			
+
 		),
 
 		/*
@@ -90,23 +90,23 @@ function thsp_cbp_get_fields() {
 						'type' => 'option',
 						'capability' => $thsp_cbp_capability,
 						'transport' => 'refresh',
-					),					
+					),
 					'control_args' => array(
-						'label' => __( 'New color field label', 'my_theme_textdomain' ),
+						'label' => __( 'New color field label', 'basis' ),
 						'type' => 'color', // Checkbox field control
 						'priority' => 3
 					)
-				)	
-						
+				)
+
 			)
 		)
 
 	);
-	
-	/* 
-	 * 'thsp_cbp_options_array' filter hook will allow you to 
+
+	/*
+	 * 'thsp_cbp_options_array' filter hook will allow you to
 	 * add/remove some of these options from a child theme
 	 */
 	return apply_filters( 'thsp_cbp_options_array', $options );
-	
+
 }
