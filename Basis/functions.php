@@ -18,7 +18,6 @@ add_theme_support( 'title-tag' );
 //Post Thumbnails
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size( 150, 120, true ); // Normal post thumbnails
-add_image_size( 'custom-thumbnail-size', 260, 175, true ); // Custom thumbnail size
 
 // Custom Menus
 add_theme_support('menus');
