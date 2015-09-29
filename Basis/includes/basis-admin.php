@@ -3,18 +3,6 @@
 // Tweak and refine the Wordpress admin
 ################################################################################
 
-// enqueue admin CSS and JS
-add_action('admin_init', 'basis_admin_init');
-
-function basis_admin_init() {
-
-	wp_register_style('basis_admin_css', get_template_directory_uri() . '/includes/css/admin.css');
-	wp_enqueue_style('basis_admin_css');
-
-	wp_register_script('basis_admin_js', get_template_directory_uri() . ' /includes/js/admin-scripts.js');
-	wp_enqueue_script('basis_admin_js');
-}
-
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
