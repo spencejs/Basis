@@ -22,7 +22,7 @@ set_post_thumbnail_size( 150, 120, true ); // Normal post thumbnails
 // Custom Menus
 add_theme_support('menus');
 register_nav_menus(array(
-	'primary_navigation' => __('Primary Navigation', 'roots'),
-	'utility_navigation' => __('Utility Navigation', 'roots')
+	'primary_navigation' => __('Primary Navigation', 'basis'),
+	'utility_navigation' => __('Utility Navigation', 'basis')
 ));
 ?>
