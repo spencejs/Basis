@@ -40,16 +40,16 @@ $meta_boxes[] = array(
 	'fields'	=> array(
 		// Text
 		array(
-			'name'  => __( 'Text', 'rwmb' ),
+			'name'  => __( 'Text', 'basis' ),
 			'id'    => "{$prefix}text",
-			'desc'  => __( 'Text description', 'rwmb' ),
+			'desc'  => __( 'Text description', 'basis' ),
 			'type'  => 'text',
-			'std'   => __( 'Default text value', 'rwmb' ),
+			'std'   => __( 'Default text value', 'basis' ),
 			'clone' => true,
 		),
 		// CHECKBOX
 		array(
-			'name' => __( 'Checkbox', 'rwmb' ),
+			'name' => __( 'Checkbox', 'basis' ),
 			'id'   => "{$prefix}checkbox",
 			'type' => 'checkbox',
 			// Value can be 0 or 1
@@ -57,34 +57,34 @@ $meta_boxes[] = array(
 		),
 		// RADIO BUTTONS
 		array(
-			'name'    => __( 'Radio', 'rwmb' ),
+			'name'    => __( 'Radio', 'basis' ),
 			'id'      => "{$prefix}radio",
 			'type'    => 'radio',
 			// Array of 'value' => 'Label' pairs for radio options.
 			// Note: the 'value' is stored in meta field, not the 'Label'
 			'options' => array(
-				'value1' => __( 'Label1', 'rwmb' ),
-				'value2' => __( 'Label2', 'rwmb' ),
+				'value1' => __( 'Label1', 'basis' ),
+				'value2' => __( 'Label2', 'basis' ),
 			),
 		),
 		// SELECT BOX
 		array(
-			'name'     => __( 'Select', 'rwmb' ),
+			'name'     => __( 'Select', 'basis' ),
 			'id'       => "{$prefix}select",
 			'type'     => 'select',
 			// Array of 'value' => 'Label' pairs for select box
 			'options'  => array(
-				'value1' => __( 'Label1', 'rwmb' ),
-				'value2' => __( 'Label2', 'rwmb' ),
+				'value1' => __( 'Label1', 'basis' ),
+				'value2' => __( 'Label2', 'basis' ),
 			),
 			// Select multiple values, optional. Default is false.
 			'multiple' => false,
-			'std'	=> __( 'Select an Item', 'rwmb' ),
+			'std'	=> __( 'Select an Item', 'basis' ),
 		),
 		// TEXTAREA
 		array(
-			'name' => __( 'Textarea', 'rwmb' ),
-			'desc' => __( 'Textarea description', 'rwmb' ),
+			'name' => __( 'Textarea', 'basis' ),
+			'desc' => __( 'Textarea description', 'basis' ),
 			'id'   => "{$prefix}textarea",
 			'type' => 'textarea',
 			'cols' => 20,
@@ -102,14 +102,14 @@ $meta_boxes[] = array(
 	'fields'	=> array(
 		// DATE
 				array(
-					'name' => __( 'Date picker', 'rwmb' ),
+					'name' => __( 'Date picker', 'basis' ),
 					'id'   => "{$prefix}date",
 					'type' => 'date',
 
 					// jQuery date picker options. See here http://api.jqueryui.com/datepicker
 					'js_options' => array(
-						'appendText'      => __( '(yyyy-mm-dd)', 'rwmb' ),
-						'dateFormat'      => __( 'yy-mm-dd', 'rwmb' ),
+						'appendText'      => __( '(yyyy-mm-dd)', 'basis' ),
+						'dateFormat'      => __( 'yy-mm-dd', 'basis' ),
 						'changeMonth'     => true,
 						'changeYear'      => true,
 						'showButtonPanel' => true,
@@ -117,12 +117,12 @@ $meta_boxes[] = array(
 				),
 		// WYSIWYG/RICH TEXT EDITOR
 		array(
-			'name' => __( 'WYSIWYG / Rich Text Editor', 'rwmb' ),
+			'name' => __( 'WYSIWYG / Rich Text Editor', 'basis' ),
 			'id'   => "{$prefix}wysiwyg",
 			'type' => 'wysiwyg',
 			// Set the 'raw' parameter to TRUE to prevent data being passed through wpautop() on save
 			'raw'  => false,
-			'std'  => __( 'WYSIWYG default value', 'rwmb' ),
+			'std'  => __( 'WYSIWYG default value', 'basis' ),
 
 			// Editor settings, see wp_editor() function: look4wp.com/wp_editor
 			'options' => array(
