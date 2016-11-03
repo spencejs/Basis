@@ -51,7 +51,7 @@
 
 	<body <?php body_class(); ?>>
 
-		<header class="header" role="banner">
+		<header class="site-header" role="banner">
 			<div class="logo"><a href="<?php echo home_url('/');?>/"><?php bloginfo('name'); ?></a></div>
 			<nav class="main-nav" role="navigation">
 				<h3 class="menu-toggle"><?php _e('Menu', 'basis'); ?></h3>
