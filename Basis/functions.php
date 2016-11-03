@@ -7,6 +7,7 @@ locate_template(array('includes/basis-admin.php'), true, true);		// admin additi
 locate_template(array('includes/customizer-boilerplate/customizer.php'), true, true);	// customizer options
 locate_template(array('includes/basis-cleanup.php'), true, true);	// code cleanup/removal
 locate_template(array('includes/basis-custom.php'), true, true);		// custom functions
+locate_template(array('includes/basis-meta-boxes.php'), true, true);		// Meta Boxes
 
 //Set Content Width
 if ( ! isset( $content_width ) ) $content_width = 700;
